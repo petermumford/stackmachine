@@ -14,7 +14,7 @@ def stack_machine_emulator(s)
 			end
 		end
 
-		puts "#{stack}"
+		puts "#{stack.last}"
 	end
 end
 

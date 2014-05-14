@@ -1,23 +1,17 @@
 def stack_machine_emulator(s)
 	if s.nil? || s.empty?
 		puts "Sorry, you didn't enter a value"
-	elsif s =~ /^[\d+*]*$/
+	elsif s =~ /^[\d+*]*$/ && s !~ /[\+]{2,}|[\*]{2,}/
 		stack = []
-		previous = ''
 
 		sArr = s.scan(/.{1}/)
 		sArr.each do |stack_item|
-			if previous =~ /[+*]/ && previous.eql?(stack_item)
-				puts false
+			# check if stack_item is a digit
+			if stack_item =~ /^(\d)+$/
+				stack.push( stack_item.to_i )
 			else
-				# check if stack_item is a digit
-				if stack_item =~ /^(\d)+$/
-					stack.push( stack_item.to_i )
-				else
-					stack.push( stack.pop(2).inject( stack_item.to_sym ) )
-				end
+				stack.push( stack.pop(2).inject( stack_item.to_sym ) )
 			end
-			previous = stack_item
 		end
 
 		puts "#{stack.last}"

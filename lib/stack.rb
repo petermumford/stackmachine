@@ -1,7 +1,7 @@
 def stack_machine_emulator(s)
 	if s.nil? || s.empty?
 		puts "Sorry, you didn't enter a value"
-	else
+	elsif s =~ /^[\d+*]*$/
 		stack = []
 		previous = ''
 
@@ -21,6 +21,8 @@ def stack_machine_emulator(s)
 		end
 
 		puts "#{stack.last}"
+	else
+		puts false
 	end
 end
 

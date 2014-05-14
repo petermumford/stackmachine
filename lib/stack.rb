@@ -6,10 +6,15 @@ def stack_machine_emulator(s)
 
 		sArr = s.scan(/.{1}/)
 		sArr.each do |stack_item|
-			stack.push( stack_item )
+			# check if stack_item is a digit
+			if stack_item =~ /^(\d)+$/
+				stack.push( stack_item.to_i )
+			else
+				stack.push( stack.pop(2).inject( stack_item.to_sym ) )
+			end
 		end
 
-		puts "you entered #{sArr}"
+		puts "#{stack}"
 	end
 end
 

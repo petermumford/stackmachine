@@ -2,7 +2,8 @@ def stack_machine_emulator(s)
 	if s.nil? || s.empty?
 		puts "Sorry, you didn't enter a value"
 	else
-		puts "you entered #{s}"
+		sArr = s.scan(/.{1}/)
+		puts "you entered #{sArr}"
 	end
 end
 
